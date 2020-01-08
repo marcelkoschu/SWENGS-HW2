@@ -5,6 +5,7 @@ class Vendor(models.Model):
     name = models.TextField()
     headquarter = models.TextField(null=True)
     current_employees = models.IntegerField()
+    current_sales = models.DecimalField(decimal_places=2, max_digits=50)
     isPartner = models.BooleanField()
 
     def __str__(self):
@@ -20,17 +21,17 @@ class Computer(models.Model):
     # One Vendor has many computers - OneToMany Relationship
     vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE, null=False)
     # Computer can be buyed in many shops, shop can have many computers - ManyToMany Relationship
-    selled_at = models.ManyToManyField('Shop', blank=True)
+    sold_at = models.ManyToManyField('Shop', blank=True, related_name='computers')
 
     def __str__(self):
         return self.model
 
 
 class Shop(models.Model):
-    location = models.TextField()
-    sales_manager = models.TextField()
+    address = models.TextField()
     postal_code = models.IntegerField()
-    offered = models.CharField
+    sales_manager = models.TextField()
+    current_sales = models.BooleanField()
 
     def __str__(self):
         return '%s %s (%s)' % (self.location, self.sales_manager, self.postal_code)
