@@ -1,0 +1,58 @@
+<form [formGroup]="computerFormGroup" class="computer-form">
+  <mat-form-field>
+    <input matInput type="text" placeholder="Model" formControlName="model" required>
+    <mat-hint align="end">The model of the computer</mat-hint>
+    <mat-error *ngIf="computerFormGroup.controls.model.hasError('required')">Model is required</mat-error>
+    <mat-error *ngIf="computerFormGroup.controls.model.hasError('titleAlreadyExists')">Model already exists</mat-error>
+  </mat-form-field>
+  <!--
+  <mat-form-field>
+    <mat-select placeholder="Vendor" formControlName="vendor">
+      <mat-option [value]="null">Unknown</mat-option>
+      <mat-option [value]="vendor.key"
+                  *ngFor="let vendor of vendorService.vendorNames | keyvalue">{{vendor.value}}</mat-option>
+    </mat-select>
+    <mat-hint align="end">The vendor of the computer</mat-hint>
+  </mat-form-field>
+
+  -->
+  <app-date placeholder="Release date" formControlName="release_date" hint="The release date of the computer"
+            [required]="true"></app-date>
+  <div *ngIf="age !== undefined">
+    Age: {{age}}
+  </div>
+  <mat-form-field>
+    <textarea matInput placeholder="Description" formControlName="description" required></textarea>
+    <mat-hint align="end">The description of the computer</mat-hint>
+    <mat-error *ngIf="computerFormGroup.controls.description.hasError('required')">description is required</mat-error>
+    <mat-error *ngIf="computerFormGroup.controls.description.hasError('badWord')">description contains "bad word"</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="number" placeholder="storage" formControlName="storage">
+    <mat-hint align="end">The storage of the computer</mat-hint>
+    <mat-error *ngIf="computerFormGroup.controls.storage.hasError('max')">storage is too long</mat-error>
+  </mat-form-field>
+  <mat-checkbox formControlName="isEnterpriseModel">Enterprise Model</mat-checkbox>
+  <mat-form-field>
+    <mat-select placeholder="Vendor" formControlName="vendor">
+      <mat-option [value]="null">Unknown</mat-option>
+      <mat-option [value]="vendorOptions.id"
+                  *ngFor="let vendorOption of vendorOptions">{{vendorOption.name}}</mat-option>
+    </mat-select>
+    <mat-hint align="end">The vendor of the computer</mat-hint>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Shops" formControlName="selled_at" multiple>
+      <mat-option [value]="shopOption.id"
+                  *ngFor="let shopOption of shopOptions">{{shopOption.name}}</mat-option>
+    </mat-select>
+    <mat-hint align="end">The shops of the movie</mat-hint>
+  </mat-form-field>
+  <br/>
+  <mat-card-actions align="center">
+    <button mat-raised-button color="primary" [disabled]="!computerFormGroup.valid" (click)="createComputer()">
+      <span *ngIf="!computerFormGroup.controls.id.value">Create</span>
+      <span *ngIf="computerFormGroup.controls.id.value">Update</span>
+    </button>
+  </mat-card-actions>
+</form>
