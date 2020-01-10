@@ -15,13 +15,13 @@ class ShopOptionSerializer(serializers.ModelSerializer):
 
 
 class ComputerListSerializer(serializers.ModelSerializer):
-    vendor_name = serializers.SerializerMethodField()
+    vendor = serializers.SerializerMethodField()
 
     class Meta:
         model = Computer
-        fields = ['id', 'model', 'description', 'vendor_name', 'selled_at']
+        fields = ['id', 'model', 'description', 'vendor', 'isEnterpriseModel', 'storage', 'sold_at']
 
-    def get_vendor_name(self, obj):
+    def get_vendor(self, obj):
         return obj.vendor.name if obj.vendor else ''
 
 

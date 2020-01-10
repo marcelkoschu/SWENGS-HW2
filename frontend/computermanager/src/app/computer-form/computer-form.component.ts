@@ -22,13 +22,12 @@ import {UserService} from '../service/user.service';
 })
 export class ComputerFormComponent implements OnInit {
 
-  age;
   computerFormGroup;
   vendorOptions;
   shopOptions;
 
   constructor(private fb: FormBuilder, private computerService: ComputerService, private route: ActivatedRoute,
-              private router: Router, private userService: UserService) {
+              private router: Router, private userService: UserService, private vendorService: VendorService) {
   }
 
   ngOnInit() {
@@ -42,18 +41,10 @@ export class ComputerFormComponent implements OnInit {
       'model': ['', [Validators.required]],
       'release_date': [null, [Validators.required]],
       'description': ['', [Validators.required, this.badWordValidator()]],
-      'storage': [90, [Validators.max(300)]],
+      'storage': ['', [Validators.max(300)]],
       'isEnterpriseModel': [false],
       'vendor': [null],
-      'selled_at': [[]],
-    });
-
-    this.computerFormGroup.controls.release_date.valueChanges.subscribe(() => {
-      const releaseDate = this.computerFormGroup.controls.release_date.value;
-      this.age = undefined;
-      if (releaseDate) {
-        this.age = this.calculateAge(new Date(releaseDate));
-      }
+      'sold_at': [[]],
     });
 
     if (data.computer) {
@@ -61,15 +52,6 @@ export class ComputerFormComponent implements OnInit {
     }
   }
 
-  calculateAge(date) {
-    var ageDifMs = Date.now() - date;
-    if (ageDifMs > 0) {
-      var ageDate = new Date(ageDifMs);
-      return Math.abs(ageDate.getUTCFullYear() - 1970);
-    } else {
-      return 0;
-    }
-  }
 
   createComputer() {
     const cmp = this.computerFormGroup.value;

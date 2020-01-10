@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ComputerService} from '../service/computer.service';
 import {Observable} from 'rxjs';
 import {UserService} from '../service/user.service';
+import {VendorService} from "../service/vendor.service";
 
 @Component({
   selector: 'app-computer-list',
@@ -11,9 +12,9 @@ import {UserService} from '../service/user.service';
 export class ComputerListComponent implements OnInit {
 
   computers: any[];
-  displayedColumns = ['model', 'description', 'vendor', 'id'];
+  displayedColumns = ['vendor','model', 'description', 'storage', 'id'];
 
-  constructor(private computerService: ComputerService,  public userService: UserService) {
+  constructor(private computerService: ComputerService,  public userService: UserService, private vendorService: VendorService) {
   }
 
   ngOnInit() {

@@ -28,10 +28,11 @@ class Computer(models.Model):
 
 
 class Shop(models.Model):
+    name = models.TextField()
     address = models.TextField()
     postal_code = models.IntegerField()
     sales_manager = models.TextField()
     current_sales = models.BooleanField()
 
     def __str__(self):
-        return '%s %s (%s)' % (self.location, self.sales_manager, self.postal_code)
+        return '%s %s (%s)' % (self.address, self.sales_manager, self.postal_code)

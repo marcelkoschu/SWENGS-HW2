@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { VendorService } from './vendor.service';
 
-describe('PersonService', () => {
+describe('VendorService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
