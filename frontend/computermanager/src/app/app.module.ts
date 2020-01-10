@@ -27,6 +27,9 @@ import {ComputerListComponent} from "./computer-list/computer-list.component";
 import {ComputerFormComponent} from "./computer-form/computer-form.component";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {ShareButtonsModule} from "@ngx-share/buttons";
+import {ShopListComponent} from "./shop-list/shop-list.component";
+import {ShopFormComponent} from "./shop-form/shop-form.component";
+import {MatIconModule} from "@angular/material/icon";
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -37,6 +40,8 @@ export function tokenGetter() {
     AppComponent,
     ComputerListComponent,
     ComputerFormComponent,
+    ShopListComponent,
+    ShopFormComponent,
     DateComponent,
     LoginComponent,
     LogoutComponent,
@@ -46,7 +51,9 @@ export function tokenGetter() {
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    JwtModule.forRoot({config: {tokenGetter: tokenGetter,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
         whitelistedDomains: ['localhost:4200']
       }
     }),
@@ -67,6 +74,7 @@ export function tokenGetter() {
     HttpClientModule,
     HttpClientJsonpModule,
     ShareButtonsModule,
+    MatIconModule,
   ],
   providers: [
     {

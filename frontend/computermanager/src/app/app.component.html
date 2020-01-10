@@ -1,11 +1,18 @@
 <mat-toolbar>
   <button mat-button
           [matMenuTriggerFor]="computerMenu">Computer</button>
+  <button mat-button [mat-menu-trigger-for]="shopMenu">Shop</button>
   <mat-menu #computerMenu="matMenu">
-    <button mat-menu-item routerLink="computer-list">List
+    <button mat-menu-item routerLink="computer-list"><mat-icon>list</mat-icon> List
       computers</button>
-    <button mat-menu-item routerLink="computer-form">Create
+    <button mat-menu-item routerLink="computer-form"><mat-icon>create</mat-icon>Create
       computer</button>
+  </mat-menu>
+  <mat-menu #shopMenu="matMenu">
+    <button mat-menu-item routerLink="shop-list"><mat-icon>list</mat-icon>List
+      shops</button>
+    <button mat-menu-item routerLink="shop-form"><mat-icon>create</mat-icon>Create
+      new shop</button>
   </mat-menu>
   <app-logout></app-logout>
   <share-buttons [theme]="'modern-dark'"
