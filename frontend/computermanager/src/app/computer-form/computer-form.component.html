@@ -3,17 +3,17 @@
     <input matInput type="text" placeholder="Model" formControlName="model" required>
     <mat-hint align="end">The model of the computer</mat-hint>
     <mat-error *ngIf="computerFormGroup.controls.model.hasError('required')">Model is required</mat-error>
-    <mat-error *ngIf="computerFormGroup.controls.model.hasError('titleAlreadyExists')">Model already exists</mat-error>
   </mat-form-field>
   <mat-form-field>
     <textarea matInput placeholder="Description" formControlName="description" required></textarea>
     <mat-hint align="end">The description of the computer</mat-hint>
     <mat-error *ngIf="computerFormGroup.controls.description.hasError('required')">description is required</mat-error>
-    <mat-error *ngIf="computerFormGroup.controls.description.hasError('badWord')">description contains "bad word"</mat-error>
+    <mat-error *ngIf="computerFormGroup.controls.description.hasError('badWord')">description is a bad word</mat-error>
   </mat-form-field>
   <mat-form-field>
     <input matInput type="number" placeholder="storage" formControlName="storage">
-    <mat-hint align="end">The storage of the computer</mat-hint>
+    <mat-hint align="end">Storage is too big (max. 99999)</mat-hint>
+    <mat-error *ngIf="computerFormGroup.controls.storage.hasError('max')">storage is too long</mat-error>
   </mat-form-field>
   <mat-checkbox formControlName="isEnterpriseModel">Enterprise Model</mat-checkbox>
   <mat-form-field>

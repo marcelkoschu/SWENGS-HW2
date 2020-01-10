@@ -25,6 +25,8 @@ export class ComputerFormComponent implements OnInit {
   computerFormGroup;
   vendorOptions;
   shopOptions;
+  //List of badwords
+  badWords = ['shit', 'fuck', 'ass']
 
   constructor(private fb: FormBuilder, private computerService: ComputerService, private route: ActivatedRoute,
               private router: Router, private userService: UserService, private vendorService: VendorService) {
@@ -41,7 +43,7 @@ export class ComputerFormComponent implements OnInit {
       'model': ['', [Validators.required]],
       'release_date': [null, [Validators.required]],
       'description': ['', [Validators.required, this.badWordValidator()]],
-      'storage': ['', [Validators.max(300)]],
+      'storage': ['', [Validators.max(99999)]],
       'isEnterpriseModel': [false],
       'vendor': [null],
       'sold_at': [[]],
@@ -68,33 +70,16 @@ export class ComputerFormComponent implements OnInit {
     }
   }
 
+  //checks if the description is a badword
   badWordValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
-      const forbidden = /bad word/.test(control.value);
-      return forbidden ? {'badWord': {value: control.value}} : null;
+      let temp = false;
+      this.badWords.forEach(
+        current => {if (control.value == current) {temp = true;} }
+      )
+      return temp ? {'badWord': {value: control.value}} : null;
     };
   }
 
-  titleValidator(): AsyncValidatorFn {
-    return (control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> => {
-      return this.computerService.getComputers()
-        .pipe(
-          map((movies: any[]) => {
-            const currentId = this.computerFormGroup.controls.id.value;
-            const currenModel = this.computerFormGroup.controls.model.value;
-            const cmpWithSameModel = movies.find((m) => {
-              return (currentId || m.id !== currentId) && m.model === currenModel
-            });
-            if (cmpWithSameModel) {
-              return {
-                titleAlreadyExists: true
-              };
-            } else {
-              return null;
-            }
-          })
-        );
-    }
-  }
 
 }
