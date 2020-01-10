@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientJsonpModule, HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from "@angular/material/table";
@@ -25,6 +25,8 @@ import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 import {HttperrorInterceptor} from "./httperror.interceptor";
 import {ComputerListComponent} from "./computer-list/computer-list.component";
 import {ComputerFormComponent} from "./computer-form/computer-form.component";
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import {ShareButtonsModule} from "@ngx-share/buttons";
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -61,6 +63,10 @@ export function tokenGetter() {
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
+    MatDialogModule,
+    HttpClientModule,
+    HttpClientJsonpModule,
+    ShareButtonsModule,
   ],
   providers: [
     {

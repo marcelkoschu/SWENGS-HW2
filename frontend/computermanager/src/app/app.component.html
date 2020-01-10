@@ -8,5 +8,10 @@
       computer</button>
   </mat-menu>
   <app-logout></app-logout>
+  <share-buttons [theme]="'modern-dark'"
+                 [include]="['facebook','twitter','google', 'whatsapp','email','print','copy']"
+                 [show]="3"
+                 [showText]="false"
+  >Share this page with your friends!</share-buttons>
 </mat-toolbar>
 <router-outlet></router-outlet>
