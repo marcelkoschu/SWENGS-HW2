@@ -6,19 +6,21 @@ import {ComputerFormComponent} from "./computer-form/computer-form.component";
 import {VendorOptionsResolver} from "./resolver/vendor-options.resolver";
 import {ShopOptionsResolver} from "./resolver/shop-options.resolver";
 import {ComputerResolver} from "./resolver/computer.resolver";
+import {AuthGuard} from "./auth.guard";
 
 
-const routes: Routes = [{ path: 'computer-list', component: ComputerListComponent },
-  { path: 'computer-form', component: ComputerFormComponent, resolve: {
+const routes: Routes = [
+  {path: '', redirectTo: 'computer-list', pathMatch: 'full'},
+  { path: 'computer-list', component: ComputerListComponent, canActivate: [AuthGuard] },
+  { path: 'computer-form', component: ComputerFormComponent, canActivate: [AuthGuard], resolve: {
       vendorOptions: VendorOptionsResolver,
       shopOptions: ShopOptionsResolver,
     } },
-  {path: 'computer-form/:id', component: ComputerFormComponent, resolve: {
+  {path: 'computer-form/:id', component: ComputerFormComponent, canActivate: [AuthGuard], resolve: {
       vendorOptions: VendorOptionsResolver,
       shopOptions: ShopOptionsResolver,
       computer: ComputerResolver,
     }},
-  { path: '' , redirectTo: 'computer-list', pathMatch: 'full' },
   {path: 'login', component: LoginComponent},];
 
 @NgModule({
