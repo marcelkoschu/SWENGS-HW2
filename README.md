@@ -9,6 +9,7 @@
 ## Installation
 - Clone this repo
 - Create a superuser
+- Execute the npm commands listed in "Commands" below
 - Call "http://localhost:4200/api/vendor/create_default" to create Vendors (they are not manageable via forms)
 - Enjoy!
 
