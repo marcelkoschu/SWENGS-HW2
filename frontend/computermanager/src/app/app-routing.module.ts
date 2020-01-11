@@ -9,6 +9,7 @@ import {ComputerResolver} from "./resolver/computer.resolver";
 import {AuthGuard} from "./auth.guard";
 import {ShopListComponent} from "./shop-list/shop-list.component";
 import {ShopFormComponent} from "./shop-form/shop-form.component";
+import {ShopResolver} from "./resolver/shop.resolver";
 
 
 const routes: Routes = [
@@ -25,7 +26,8 @@ const routes: Routes = [
     }},
   { path: 'shop-list', component: ShopListComponent, canActivate: [AuthGuard] },
   { path: 'shop-form', component: ShopFormComponent, canActivate: [AuthGuard],  },
-  {path: 'shop-form/:id', component: ShopFormComponent, canActivate: [AuthGuard], },
+  {path: 'shop-form/:id', component: ShopFormComponent, canActivate: [AuthGuard], resolve: {
+    shop: ShopResolver,}},
   {path: 'login', component: LoginComponent},];
 
 @NgModule({
