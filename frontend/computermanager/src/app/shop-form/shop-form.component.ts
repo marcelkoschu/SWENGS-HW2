@@ -26,10 +26,10 @@ export class ShopFormComponent implements OnInit {
       'id': [null],
       'name': ['', [Validators.required]],
       'address': [null, [Validators.required]],
-      'postal_code': ['', [Validators.required]],
+      'postal_code': ['', [Validators.required, Validators.min(1000), Validators.max(9999)]],
       'sales_manager': ['', [Validators.required]],
-      'current_sales': ['', Validators.required],
-      'is_open': ['', Validators.required],
+      'employee_count': ['', Validators.required],
+      'is_open': [false],
     });
 
     if (data.shop) {

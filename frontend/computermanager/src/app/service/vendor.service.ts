@@ -6,10 +6,8 @@ import {HttpClient} from '@angular/common/http';
 })
 export class VendorService {
 
-  vendorNames = [];
 
   constructor(private http: HttpClient) {
-   //this.retrieveVendorOptions().forEach(value => this.vendorNames.append(value[0].name));
   }
 
   retrieveVendorOptions() {

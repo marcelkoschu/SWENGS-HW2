@@ -14,7 +14,7 @@ import {retry} from "rxjs/operators";
 export class ShopListComponent implements OnInit {
 
   shops: any[];
-  displayedColumns = ['name', 'address', 'postal_code', 'sales_manager', 'current_sales', 'is_open', 'id'];
+  displayedColumns = ['name', 'address', 'postal_code', 'sales_manager', 'employee_count', 'is_open', 'id'];
   temp = null;
 
   constructor(private shopService: ShopService) {

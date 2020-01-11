@@ -24,7 +24,7 @@
     <th mat-header-cell *matHeaderCellDef>Actions</th>
     <td mat-cell *matCellDef="let computer">
       <button mat-button [routerLink]="'/computer-form/' + computer.id">Edit</button>
-      <button mat-button (click)="deleteComputer(computer)"> <!-- *ngIf="userService.hasPermission('computermanager.delete_computer')" --> Delete</button>
+      <button mat-button (click)="deleteComputer(computer)" *ngIf="userService.hasPermission('computermanager.delete_computer')">Delete</button>
     </td>
   </ng-container>
 

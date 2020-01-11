@@ -12,15 +12,16 @@
   <mat-form-field>
     <input matInput type="number" placeholder="postal_code" formControlName="postal_code">
     <mat-hint align="end">Postal code</mat-hint>
-    <mat-error *ngIf="shopFormGroup.controls.postal_code.hasError('max')">storage is too long</mat-error>
   </mat-form-field>
+  <mat-error *ngIf="shopFormGroup.controls.postal_code.hasError('max')">Postal code is too long (max. 9999)</mat-error>
+  <mat-error *ngIf="shopFormGroup.controls.postal_code.hasError('min')">Postal code is too short (min. 1000)</mat-error>
   <mat-form-field>
     <textarea matInput placeholder="Sales Manager" formControlName="sales_manager" required></textarea>
     <mat-hint align="end">The sales manager of the shop</mat-hint>
   </mat-form-field>
   <mat-form-field>
-    <textarea matInput placeholder="Current sales" formControlName="current_sales" required></textarea>
-    <mat-hint align="end">The current sales of the shop</mat-hint>
+    <input matInput type="number" placeholder="Current employees" formControlName="employee_count" required>
+    <mat-hint align="end">The current amount of employees</mat-hint>
   </mat-form-field>
   <mat-checkbox formControlName="is_open">Is Shop open</mat-checkbox>
   <br/>
