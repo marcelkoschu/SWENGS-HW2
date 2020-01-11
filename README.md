@@ -6,6 +6,12 @@
 ## Description
 - This program is designed to facilitate the management of a computer company. For this purpose the management of different computers, their manufacturers and an administration of the stores (shops) is offered.
 
+## Installation
+- Clone this repo
+- Create a superuser
+- Call "http://localhost:4200/api/vendor/create_default" to create Vendors (they are not manageable via forms)
+- Enjoy!
+
 ## Special Features
 - Share Buttons (special thanks to https://murhafsousli.github.io/ngx-sharebuttons/#/)
 - Badword Validator
