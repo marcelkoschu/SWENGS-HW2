@@ -1,10 +1,5 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {ComputerService} from '../service/computer.service';
-import {Observable} from 'rxjs';
-import {UserService} from '../service/user.service';
-import {VendorService} from "../service/vendor.service";
+import {Component, OnInit} from '@angular/core';
 import {ShopService} from "../service/shop.service";
-import {retry} from "rxjs/operators";
 
 @Component({
   selector: 'app-shop-list',

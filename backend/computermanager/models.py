@@ -11,6 +11,14 @@ class Vendor(models.Model):
     def __str__(self):
         return self.name
 
+    @classmethod
+    def create(cls, name, head, curr_e, curr_s, partner):
+        vendor = cls(name=name, headquarter=head, current_employees=curr_e, current_sales=curr_s, isPartner=partner)
+        return vendor
+
+
+
+
 
 class Computer(models.Model):
     model = models.TextField()

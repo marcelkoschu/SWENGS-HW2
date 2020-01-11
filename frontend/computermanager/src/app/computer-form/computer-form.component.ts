@@ -1,18 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {
-  AbstractControl,
-  AsyncValidatorFn,
-  FormBuilder,
-  ValidationErrors,
-  ValidatorFn,
-  Validators
-} from '@angular/forms';
+import {AbstractControl, FormBuilder, ValidatorFn, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ComputerService} from '../service/computer.service';
-import {ShopService} from '../service/shop.service';
 import {VendorService} from '../service/vendor.service';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
 import {UserService} from '../service/user.service';
 
 @Component({

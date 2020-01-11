@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {FormBuilder, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
 import {UserService} from '../service/user.service';
 
 @Component({

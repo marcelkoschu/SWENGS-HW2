@@ -24,6 +24,8 @@ urlpatterns = [
     path('computer/<int:pk>/update', views.computer_form_update),
     path('computer/<int:pk>/delete', views.computer_delete),
 
+    path('vendor/create_default', views.vendor_create_default),
+
     path('shop/list', views.shop_list),
     path('shop/create', views.shop_form_create),
     path('shop/<int:pk>/get', views.shop_form_get),
