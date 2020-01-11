@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, enableProdMode} from '@angular/core';
 import {UserService} from "./service/user.service";
 import '../icons'
 

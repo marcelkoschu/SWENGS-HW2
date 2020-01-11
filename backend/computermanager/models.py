@@ -32,7 +32,8 @@ class Shop(models.Model):
     address = models.TextField()
     postal_code = models.IntegerField()
     sales_manager = models.TextField()
-    current_sales = models.BooleanField()
+    current_sales = models.FloatField()
+    is_open = models.BooleanField()
 
     def __str__(self):
         return '%s %s (%s)' % (self.address, self.sales_manager, self.postal_code)

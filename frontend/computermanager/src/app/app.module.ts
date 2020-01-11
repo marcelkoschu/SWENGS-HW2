@@ -27,9 +27,9 @@ import {ComputerListComponent} from "./computer-list/computer-list.component";
 import {ComputerFormComponent} from "./computer-form/computer-form.component";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {ShareButtonsModule} from "@ngx-share/buttons";
-import {ShopListComponent} from "./shop-list/shop-list.component";
 import {ShopFormComponent} from "./shop-form/shop-form.component";
 import {MatIconModule} from "@angular/material/icon";
+import {ShopListComponent} from "./shop-list/shop-list.component";
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -82,8 +82,7 @@ export function tokenGetter() {
       useClass: HttperrorInterceptor,
       multi: true,
       deps: [MatSnackBar]
-    }
-  ],
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

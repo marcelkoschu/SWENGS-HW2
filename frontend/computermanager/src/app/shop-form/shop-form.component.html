@@ -1,1 +1,33 @@
-<p>shop-form works!</p>
+<form [formGroup]="shopFormGroup" class="shop-form">
+  <mat-form-field>
+    <input matInput type="text" placeholder="Name" formControlName="name" required>
+    <mat-hint align="end">The name of the shop</mat-hint>
+    <mat-error *ngIf="shopFormGroup.controls.name.hasError('required')">Name is required</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput placeholder="Address" formControlName="address" required></textarea>
+    <mat-hint align="end">The address of the shop</mat-hint>
+    <mat-error *ngIf="shopFormGroup.controls.address.hasError('required')">description is required</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="number" placeholder="postal_code" formControlName="postal_code">
+    <mat-hint align="end">Postal code</mat-hint>
+    <mat-error *ngIf="shopFormGroup.controls.postal_code.hasError('max')">storage is too long</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput placeholder="Sales Manager" formControlName="sales_manager" required></textarea>
+    <mat-hint align="end">The sales manager of the shop</mat-hint>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput placeholder="Current sales" formControlName="current_sales" required></textarea>
+    <mat-hint align="end">The current sales of the shop</mat-hint>
+  </mat-form-field>
+  <mat-checkbox formControlName="is_open">Is Shop open</mat-checkbox>
+  <br/>
+  <mat-card-actions align="center">
+    <button mat-raised-button color="primary" [disabled]="!shopFormGroup.valid" (click)="createShop()">
+      <span *ngIf="!shopFormGroup.controls.id.value">Create</span>
+      <span *ngIf="shopFormGroup.controls.id.value">Update</span>
+    </button>
+  </mat-card-actions>
+</form>

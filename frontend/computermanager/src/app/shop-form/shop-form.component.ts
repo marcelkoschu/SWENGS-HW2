@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {
+  FormBuilder,
+  Validators
+} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ShopService} from '../service/shop.service';
+import {UserService} from '../service/user.service';
 
 @Component({
   selector: 'app-shop-form',
@@ -7,9 +14,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShopFormComponent implements OnInit {
 
-  constructor() { }
+  shopFormGroup;
+
+  constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router, private userService: UserService, private shopService: ShopService) {
+  }
 
   ngOnInit() {
+
+    const data = this.route.snapshot.data;
+    this.shopFormGroup = this.fb.group({
+      'id': [null],
+      'name': ['', [Validators.required]],
+      'address': [null, [Validators.required]],
+      'postal_code': ['', [Validators.required]],
+      'sales_manager': ['', [Validators.required]],
+      'current_sales': ['', Validators.required],
+      'is_open': ['', Validators.required],
+    });
+
+    if (data.shop) {
+      this.shopFormGroup.patchValue(data.shop);
+    }
+  }
+
+
+  createShop() {
+    const shop = this.shopFormGroup.value;
+    if (shop.id) {
+      this.shopService.updateShop(shop)
+        .subscribe(() => {
+          alert('updated successfully');
+        });
+    } else {
+      this.shopService.createShop(shop)
+        .subscribe((response: any) => {
+          this.router.navigate(['/shop-form/' + response.id]);
+        });
+    }
   }
 
 }

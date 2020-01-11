@@ -24,6 +24,12 @@ urlpatterns = [
     path('computer/<int:pk>/update', views.computer_form_update),
     path('computer/<int:pk>/delete', views.computer_delete),
 
+    path('shop/list', views.shop_list),
+    path('shop/create', views.shop_form_create),
+    path('shop/<int:pk>/get', views.shop_form_get),
+    path('shop/<int:pk>/update', views.shop_form_update),
+    path('shop/<int:pk>/delete', views.shop_delete),
+
     url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     url(r'^api-token-auth/', obtain_jwt_token),

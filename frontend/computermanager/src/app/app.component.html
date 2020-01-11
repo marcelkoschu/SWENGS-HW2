@@ -14,11 +14,11 @@
     <button mat-menu-item routerLink="shop-form"><mat-icon>create</mat-icon>Create
       new shop</button>
   </mat-menu>
-  <app-logout></app-logout>
   <share-buttons [theme]="'modern-dark'"
                  [include]="['facebook','twitter','google', 'whatsapp','email','print','copy']"
                  [show]="3"
                  [showText]="false"
   >Share this page with your friends!</share-buttons>
+  <app-logout></app-logout>
 </mat-toolbar>
 <router-outlet></router-outlet>

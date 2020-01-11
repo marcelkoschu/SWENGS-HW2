@@ -14,6 +14,18 @@ class ShopOptionSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class ShopListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Shop
+        fields = ['id', 'name', 'address', 'postal_code', 'sales_manager', 'current_sales', 'is_open']
+
+
+class ShopFormSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Shop
+        fields = ['id', 'name', 'address', 'postal_code', 'sales_manager', 'current_sales', 'is_open']
+
+
 class ComputerListSerializer(serializers.ModelSerializer):
     vendor = serializers.SerializerMethodField()
 

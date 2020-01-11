@@ -12,8 +12,8 @@
   </mat-form-field>
   <mat-form-field>
     <input matInput type="number" placeholder="storage" formControlName="storage">
-    <mat-hint align="end">Storage is too big (max. 99999)</mat-hint>
-    <mat-error *ngIf="computerFormGroup.controls.storage.hasError('max')">storage is too long</mat-error>
+    <mat-hint align="end">Storage in GB</mat-hint>
+    <mat-error *ngIf="computerFormGroup.controls.storage.hasError('max')">storage is too big (max. 99999)</mat-error>
   </mat-form-field>
   <mat-checkbox formControlName="isEnterpriseModel">Enterprise Model</mat-checkbox>
   <mat-form-field>

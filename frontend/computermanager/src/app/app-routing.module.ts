@@ -25,9 +25,7 @@ const routes: Routes = [
     }},
   { path: 'shop-list', component: ShopListComponent, canActivate: [AuthGuard] },
   { path: 'shop-form', component: ShopFormComponent, canActivate: [AuthGuard],  },
-  {path: 'shop-form/:id', component: ComputerFormComponent, canActivate: [AuthGuard], resolve: {
-      computer: ComputerResolver,
-    }},
+  {path: 'shop-form/:id', component: ShopFormComponent, canActivate: [AuthGuard], },
   {path: 'login', component: LoginComponent},];
 
 @NgModule({
